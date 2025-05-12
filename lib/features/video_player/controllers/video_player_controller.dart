@@ -1,3 +1,4 @@
+import 'dart:io'; // Add this import for File class
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:video_player/video_player.dart';
 
@@ -8,8 +9,11 @@ class VideoPlayerNotifier extends StateNotifier<VideoPlayerController?> {
     // Dispose previous controller if exists
     await state?.dispose();
 
-    // Create new controller
-    final controller = VideoPlayerController.network(videoUrl);
+    // Create new controller using networkUrl instead of deprecated network
+    final controller = VideoPlayerController.networkUrl(
+      Uri.parse(videoUrl),
+      // You can add additional options here if needed
+    );
 
     // Initialize and play
     await controller.initialize();
@@ -24,7 +28,9 @@ class VideoPlayerNotifier extends StateNotifier<VideoPlayerController?> {
     await state?.dispose();
 
     // Create new controller
-    final controller = VideoPlayerController.file(File(filePath));
+    final controller = VideoPlayerController.file(
+      File(filePath), // Now File is available from dart:io
+    );
 
     // Initialize and play
     await controller.initialize();

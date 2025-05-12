@@ -81,7 +81,7 @@ class ThemeConstants {
   // Input Decoration
   static final InputDecoration inputDecoration = InputDecoration(
     filled: true,
-    fillColor: AppColors.inputBackground,
+    fillColor: AppColors.background, // Replace with an existing color property
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide.none,

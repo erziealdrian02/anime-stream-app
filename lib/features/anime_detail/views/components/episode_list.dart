@@ -5,7 +5,6 @@ import '../../../../config/routes/route_names.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../core/models/episode.dart';
 import '../../../../core/utils/date_formatter.dart';
-import '../../providers/anime_detail_providers.dart';
 
 class EpisodeList extends ConsumerWidget {
   final List<Episode> episodes;

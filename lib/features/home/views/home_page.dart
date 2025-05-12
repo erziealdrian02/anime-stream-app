@@ -26,11 +26,14 @@ class HomePage extends ConsumerWidget {
       appBar: const CustomAppBar(title: 'Anime Stream'),
       body: RefreshIndicator(
         onRefresh: () async {
-          ref.refresh(ongoingAnimeProvider);
-          ref.refresh(completedAnimeProvider);
-          ref.refresh(popularAnimeProvider);
-          ref.refresh(moviesProvider);
-          ref.refresh(carouselItemsProvider);
+          // Handle the returned AsyncValue from each refresh
+          await Future.wait([
+            ref.refresh(ongoingAnimeProvider.future),
+            ref.refresh(completedAnimeProvider.future),
+            ref.refresh(popularAnimeProvider.future),
+            ref.refresh(moviesProvider.future),
+            ref.refresh(carouselItemsProvider.future),
+          ]);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

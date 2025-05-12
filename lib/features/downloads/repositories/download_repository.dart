@@ -1,13 +1,11 @@
 import '../../../core/models/anime.dart';
 import '../../../core/models/episode.dart';
 import '../../../core/services/download_service.dart';
-import '../../../core/services/storage_service.dart';
+// import '../../../core/services/storage_service.dart';
 
 class DownloadRepository {
   final DownloadService _downloadService;
-  final StorageService _storageService;
-
-  DownloadRepository(this._downloadService, this._storageService);
+  DownloadRepository(this._downloadService);
 
   Future<List<Anime>> getDownloadedAnime() async {
     return _downloadService.getDownloadedAnime();

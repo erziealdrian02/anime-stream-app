@@ -1,3 +1,4 @@
+import 'dart:async'; // Add this import for Timer
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../config/theme/app_colors.dart';
@@ -120,10 +121,10 @@ class _PlayerControlsState extends State<PlayerControls> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.black.withOpacity(0.7),
+                        Colors.black.withAlpha(178), // 0.7 opacity
                         Colors.transparent,
                         Colors.transparent,
-                        Colors.black.withOpacity(0.7),
+                        Colors.black.withAlpha(178), // 0.7 opacity
                       ],
                       stops: const [0.0, 0.3, 0.7, 1.0],
                     ),
@@ -166,7 +167,7 @@ class _PlayerControlsState extends State<PlayerControls> {
                             Text(
                               'Episode ${widget.episodeNumber}',
                               style: TextStyle(
-                                color: Colors.grey.shade300,
+                                color: Colors.grey[300],
                                 fontSize: 14,
                               ),
                             ),
@@ -192,7 +193,10 @@ class _PlayerControlsState extends State<PlayerControls> {
                     const SizedBox(width: 16),
                     Container(
                       decoration: BoxDecoration(
-                        color: AppColors.primaryBlue.withOpacity(0.8),
+                        color: Color.alphaBlend(
+                          AppColors.primaryBlue.withAlpha(204), // 0.8 opacity
+                          Colors.transparent,
+                        ),
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
@@ -250,10 +254,13 @@ class _PlayerControlsState extends State<PlayerControls> {
                                   overlayRadius: 12,
                                 ),
                                 activeTrackColor: AppColors.primaryBlue,
-                                inactiveTrackColor: Colors.grey.shade700,
+                                inactiveTrackColor: Colors.grey[700]!,
                                 thumbColor: AppColors.primaryBlue,
-                                overlayColor: AppColors.primaryBlue.withOpacity(
-                                  0.3,
+                                overlayColor: Color.alphaBlend(
+                                  AppColors.primaryBlue.withAlpha(
+                                    76,
+                                  ), // 0.3 opacity
+                                  Colors.transparent,
                                 ),
                               ),
                               child: Slider(

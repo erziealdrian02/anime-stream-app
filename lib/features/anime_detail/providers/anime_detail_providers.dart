@@ -5,6 +5,10 @@ import '../../../core/services/storage_service.dart';
 import '../controllers/anime_detail_controller.dart';
 import '../repositories/anime_detail_repository.dart';
 
+final apiServiceProvider = Provider<ApiService>((ref) {
+  return ApiService();
+});
+
 final animeDetailRepositoryProvider = Provider<AnimeDetailRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   final storageService = ref.watch(storageServiceProvider);

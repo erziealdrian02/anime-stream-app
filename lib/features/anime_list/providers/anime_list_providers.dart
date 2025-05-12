@@ -4,6 +4,10 @@ import '../../../core/services/api_service.dart';
 import '../controllers/anime_list_controller.dart';
 import '../repositories/anime_list_repository.dart';
 
+final apiServiceProvider = Provider<ApiService>((ref) {
+  return ApiService();
+});
+
 final animeListRepositoryProvider = Provider<AnimeListRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return AnimeListRepository(apiService);

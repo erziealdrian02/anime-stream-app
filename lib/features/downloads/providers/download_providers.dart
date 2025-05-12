@@ -6,6 +6,10 @@ import '../../../core/services/storage_service.dart';
 import '../controllers/download_controller.dart';
 import '../repositories/download_repository.dart';
 
+final storageServiceProvider = Provider<StorageService>((ref) {
+  return StorageService();
+});
+
 final downloadServiceProvider = Provider<DownloadService>((ref) {
   final storageService = ref.watch(storageServiceProvider);
   return DownloadService(storageService: storageService);
@@ -13,8 +17,7 @@ final downloadServiceProvider = Provider<DownloadService>((ref) {
 
 final downloadRepositoryProvider = Provider<DownloadRepository>((ref) {
   final downloadService = ref.watch(downloadServiceProvider);
-  final storageService = ref.watch(storageServiceProvider);
-  return DownloadRepository(downloadService, storageService);
+  return DownloadRepository(downloadService);
 });
 
 final downloadControllerProvider =

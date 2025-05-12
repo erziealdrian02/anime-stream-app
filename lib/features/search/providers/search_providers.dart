@@ -5,6 +5,10 @@ import '../../../core/services/api_service.dart';
 import '../controllers/search_controller.dart';
 import '../repositories/search_repository.dart';
 
+final apiServiceProvider = Provider<ApiService>((ref) {
+  return ApiService();
+});
+
 final searchRepositoryProvider = Provider<SearchRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return SearchRepository(apiService);

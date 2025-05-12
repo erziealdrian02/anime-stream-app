@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/home/views/home_page.dart';
 import '../../features/downloads/views/download_page.dart'; // Ensure this file defines the DownloadPage class
@@ -12,6 +11,7 @@ import '../../features/video_player/views/video_player_page.dart';
 import 'route_names.dart';
 
 class AppRouter {
+  AppRouter();
   static final GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [

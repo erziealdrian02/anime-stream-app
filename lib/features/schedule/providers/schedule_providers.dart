@@ -4,6 +4,11 @@ import '../../../core/services/api_service.dart';
 import '../controllers/schedule_controller.dart';
 import '../repositories/schedule_repository.dart';
 
+// Add this if not defined elsewhere
+final apiServiceProvider = Provider<ApiService>((ref) {
+  return ApiService();
+});
+
 final scheduleRepositoryProvider = Provider<ScheduleRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return ScheduleRepository(apiService);
